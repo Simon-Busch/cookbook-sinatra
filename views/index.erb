@@ -1,0 +1,11 @@
+<h1>Welcome to your <em>recipe</em> list  ! </h1>
+
+<ul>
+<% @recipe.each do |recipe| %>
+  <li>
+    <%= "#{recipe.description} || rating is  #{recipe.rating}/5 || #{recipe.prep_time}" %>
+  </li>
+<% end %>
+
+</ul>
+
