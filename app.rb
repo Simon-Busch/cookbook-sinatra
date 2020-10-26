@@ -15,9 +15,6 @@ configure :development do
   BetterErrors.application_root = File.expand_path('..', __FILE__)
 end
 
-
-
-
 # ne pas utiliser controller ni router
 
 get '/' do
@@ -48,3 +45,9 @@ post '/recipes' do
   redirect to '/index'
 end
 
+delete '/delete' do
+  csv_file   = File.join(__dir__, 'lib/recipes.csv')
+  cookbook   = Cookbook.new(csv_file)
+  @cookbook.remove_recipe(params[:index])
+  redirect to '/index'
+end

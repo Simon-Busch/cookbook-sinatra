@@ -1,10 +1,21 @@
 <h1>Welcome to your <em>recipe</em> list  ! </h1>
 
 <ul>
-<% @recipe.each do |recipe| %>
+<% @recipe.each_with_index do |recipe, index| %>
   <li>
-    <%= "#{recipe.description} || rating is  #{recipe.rating}/5 || #{recipe.prep_time}" %>
+    <%= "#{index+1} <> #{recipe.description} || rating is  #{recipe.rating}/5 || #{recipe.prep_time}" %>
+    
+    
+
+    <form action="/delete" method="delete">
+    <%# function is launched because "/delete" in our app.rb %>
+    <input name="index" placeholder="Delete me">
+    </form>
+    
+
   </li>
+
+
 <% end %>
 
 </ul>
