@@ -45,9 +45,13 @@ post '/recipes' do
   redirect to '/index'
 end
 
-delete '/delete' do
+get '/recipes' do
+  #set up to acces cookbook
   csv_file   = File.join(__dir__, 'lib/recipes.csv')
   cookbook   = Cookbook.new(csv_file)
-  @cookbook.remove_recipe(params[:index])
+  #remove with index
+  
+  cookbook.remove_recipe(params["index"].to_i - 1)
+  
   redirect to '/index'
 end

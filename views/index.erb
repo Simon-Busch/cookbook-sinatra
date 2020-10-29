@@ -3,14 +3,13 @@
 <ul>
 <% @recipe.each_with_index do |recipe, index| %>
   <li>
+  <form action="/recipes">
     <%= "#{index+1} <> #{recipe.description} || rating is  #{recipe.rating}/5 || #{recipe.prep_time}" %>
-    
-   
 
-    <form action="/delete" method="delete">
     <%# function is launched because "/delete" in our app.rb %>
-    <input name="index" placeholder="Delete me">
-    </form>
+    <input type="submit" name="index" value="<%=index+1%>">
+    
+  </form>
     
 
   </li>
